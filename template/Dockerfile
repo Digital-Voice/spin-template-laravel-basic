@@ -9,12 +9,6 @@ FROM serversideup/php:8.3-fpm-nginx-alpine AS base
 ## Uncomment if you need to install additional PHP extensions
 USER root
 RUN install-php-extensions bcmath gd calendar intl pdo_mysql pdo_sqlite zip exif opcache pcntl
-RUN docker-php-ext-enable opcache && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install -j$(nproc) gd && \
-    docker-php-ext-enable gd && \
-    docker-php-ext-enable calendar && \
-    docker-php-ext-enable intl
 
 ############################################
 # Development Image
